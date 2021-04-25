@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+    deny from all
+
+    # Disable index view
+    Options -Indexes
+
+    # Hide a specific file
+    <FilesMatch "\.(env|example|gitattributes|gitignore|htaccess|json|lock|xml|md|mix.js)$">
+        Order Allow,Deny
+        Deny from all
+    </FilesMatch>
+    <Files artisan>
+        Order allow,deny
+        Deny from all
+    </Files>
+
+    ErrorDocument 403 /admin/
+
+</IfModule>
